@@ -1,34 +1,16 @@
-const App=() => {
-  return(
-        <div className="login-container">
-          <h2 className="form-title">Log in with </h2>
-            <div className="social-login">
-              <button className="social-button">
-              <img src="" alt="Google" className="social-icon" /> 
-              </button>
-              </div>   
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import Login from "./Login";
+import Signup from "./Signup";
 
-                <p className="seperator"><span>or</span></p>
-                <form action="#" className="login-page">
-                  <div className="input-wrapper">
-                  <i className="material-symbols-outlined">mail</i>
-                    <input type="email" placeholder="Email Address " 
-                    className="input-field" required />
-                    
-                  </div>
+const App = () => {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+      </Routes>
+    </Router>
+  );
+};
 
-                  <div className="input-wrapper">
-                  <i className="material-symbols-outlined">lock</i>
-                    <input type="password" placeholder="Password " 
-                    className="input-field" required />
-                    
-                  </div>
-                  <a href="#" className="forgot-password">Forgot Password?</a>
-                  <button className="login-button">Log In</button>
-                </form>
-                <p className="sign-up">Don&apos; t have an account? <a href="#"> Sign up</a></p> 
-        </div>
-  )
-}
-
-export default App
+export default App;
