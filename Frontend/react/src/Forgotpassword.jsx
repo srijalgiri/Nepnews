@@ -6,48 +6,49 @@ const ForgotPassword = () => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handlePasswordChange = (e) => {
+  const handleChange = (e) => {
     setNewPassword(e.target.value);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
+    
     if (newPassword.length < 8) {
       setError("Password must be at least 8 characters long.");
       return;
     }
 
     setError("");
-
-    // Simulate password change success
+    // Simulate password change and navigate back to the login page
     alert("Password changed successfully!");
-    
-    // Redirect back to login page
-    navigate("/");
+    navigate("/"); // Navigate back to login page
   };
 
   return (
     <div className="forgot-password-container">
-      <h2 className="form-title">Reset Password</h2>
+      {/* Circular Back Button */}
+      <button className="back-button" onClick={() => navigate("/")}>
+        <i className="material-symbols-outlined">arrow_back</i>
+      </button>
 
-      <form onSubmit={handleSubmit} className="forgot-password-page">
+      <h2 className="form-title">Forgot Password</h2>
+
+      <form onSubmit={handleSubmit} className="forgot-password-form">
         <div className="input-wrapper">
           <i className="material-symbols-outlined">lock</i>
           <input
             type="password"
-            name="newPassword"
-            placeholder="New Password"
+            placeholder="Enter New Password"
             className="input-field"
             value={newPassword}
-            onChange={handlePasswordChange}
+            onChange={handleChange}
             required
           />
         </div>
 
         {error && <p className="error-message">{error}</p>}
 
-        <button type="submit" className="reset-button">Reset Password</button>
+        <button type="submit" className="submit-button">Change Password</button>
       </form>
     </div>
   );
