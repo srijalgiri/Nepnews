@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -10,6 +10,7 @@ const Signup = () => {
   });
 
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -17,21 +18,30 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
     if (formData.password.length < 8) {
       setError("Password must be at least 8 characters long.");
       return;
     }
+    
     if (formData.password !== formData.confirmPassword) {
       setError("Passwords do not match.");
       return;
     }
+
     setError("");
-    // Proceed with form submission (e.g., API call)
-    console.log("Form submitted", formData);
+    
+    // ✅ Redirect to login page after signup
+    navigate("/");
   };
 
   return (
     <div className="signup-container">
+      {/* ✅ Logo Section */}
+      <div className="logo">
+        <img src="logo.png" alt="Logo" />
+      </div>
+
       <h2 className="form-title">Sign Up</h2>
 
       <div className="social-login">
