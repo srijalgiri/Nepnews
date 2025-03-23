@@ -2,12 +2,14 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import './signup.css';
 import './social.css';
+
 const Signup = () => {
   const [formData, setFormData] = useState({
     username: "",
     email: "",
     password: "",
     confirmPassword: "",
+    role: "reader", // Default role
   });
 
   const [error, setError] = useState("");
@@ -38,7 +40,6 @@ const Signup = () => {
 
   return (
     <div className="signup-container">
-      {/* ✅ Logo Section */}
       <div className="logo">
         <img src="image.png" alt="Logo" />
       </div>
@@ -104,6 +105,21 @@ const Signup = () => {
             onChange={handleChange}
             required
           />
+        </div>
+
+        <div className="input-wrapper">
+          <i className="material-symbols-outlined">assignment_ind</i>
+          <select 
+            name="role" 
+            className="input-field" 
+            value={formData.role} 
+            onChange={handleChange} 
+            required
+          >
+            <option value="reader">Reader</option>
+            <option value="author">Author</option>
+            <option value="editor">Editor</option>
+          </select>
         </div>
 
         {error && <p className="error-message">{error}</p>}
