@@ -12,7 +12,7 @@ body {
   justify-content: center;
   min-height: 100vh;
   width: 100%;
-  background-color: #F4F6F8; /* Updated Background Color */
+  background-color: #FAEADE; /* Updated Background Color */
   font-family: 'Poppins', sans-serif;
   padding: 20px;
   overflow-x: hidden; /* Prevents horizontal scrolling */
@@ -22,7 +22,7 @@ body {
 .login-container, .signup-container {
   max-width: 400px;
   width: 100%;
-  background: white;
+  background: #C1825E;
   padding: 25px;
   border-radius: 12px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
@@ -90,13 +90,13 @@ body {
 .separator {
   text-align: center;
   font-size: 14px;
-  color: #777;
+  color: #0e0505;
   margin: 15px 0;
   position: relative;
 }
 
 .separator span {
-  background: #fff;
+  background: #C1825E;
   padding: 0 12px;
 }
 
@@ -107,7 +107,7 @@ body {
   top: 50%;
   width: 40%;
   height: 1px;
-  background: #ddd;
+  background: #000000;
 }
 
 .separator::before {

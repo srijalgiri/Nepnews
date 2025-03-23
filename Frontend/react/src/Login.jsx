@@ -5,7 +5,7 @@ const Login = () => {
     <div className="login-container">
       {/* ✅ Logo Section */}
       <div className="logo">
-        <img src="logo.png" alt="Logo" />
+        <img src="image.png" alt="Logo" />
       </div>
 
       <h2 className="form-title">Log in</h2>
