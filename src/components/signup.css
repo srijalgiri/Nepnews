@@ -1,16 +1,16 @@
-/* Main container */
+
 .signup-container {
   display: flex;
-  max-width: 1500px; /* Limiting the max-width for larger screens */
-  height: 100vh; /* Full height */
+  max-width: 1500px; 
+  height: 100vh; 
   background-color: #fff;
   border-radius: 10px;
   overflow: hidden;
 }
 
-/* Left container for content */
+
 .signup-left-container {
-  flex: 1; /* Takes up 50% of the container */
+  flex: 1; 
   background-color: #010601;
   color: white;
   display: flex;
@@ -22,48 +22,48 @@
 }
 
 .signup-left-container h1 {
-  font-size: 2.5rem; /* Smaller font size */
+  font-size: 2.5rem; 
   margin-bottom: 15px;
   font-weight: 600;
 }
 
 .signup-left-container p {
-  font-size: 1rem; /* Smaller font size */
+  font-size: 1rem; 
   margin-top: 15px;
   line-height: 1.5;
   color: #f5f5f5;
-  max-width: 250px; /* Reduced max-width */
+  max-width: 250px; 
   margin: 0 auto;
 }
 
-/* Right container for form */
+
 .signup-right-container {
-  flex: 1; /* Takes up the other 50% of the container */
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 10px; /* Further reduced padding */
+  padding: 10px; 
   background-color: #C1825E;
   position: relative;
-  overflow: visible; /* Ensures the logo is fully visible */
+  overflow: visible; 
 }
 
 .signup-right-container img {
-  width: 75px; /* Smaller logo */
+  width: 75px; 
   height: auto;
-  margin-bottom: 15px; /* Reduced margin */
+  margin-bottom: 15px; 
 }
 
 .signup-right-container h2 {
   text-align: center;
-  margin-bottom: 8px; /* Further reduced margin */
-  font-size: 1.3rem; /* Even smaller font size */
+  margin-bottom: 8px; 
+  font-size: 1.3rem; 
   font-weight: 500;
   color: #fff;
 }
 
-/* Form styling */
+
 .signup-page {
   width: 100%;
   display: flex;
@@ -73,7 +73,7 @@
 
 .input-wrapper {
   width: 100%;
-  margin-bottom: 8px; /* Further reduced margin */
+  margin-bottom: 8px;
   position: relative;
 }
 
@@ -82,16 +82,16 @@
   left: 10px;
   top: 50%;
   transform: translateY(-50%);
-  font-size: 1.1rem; /* Even smaller icon size */
+  font-size: 1.1rem; 
   color: #888;
 }
 
 .input-field {
   width: 100%;
-  padding: 7px 7px 7px 30px; /* Further reduced padding */
+  padding: 7px 7px 7px 30px; 
   border: 1px solid #ccc;
   border-radius: 5px;
-  font-size: 0.85rem; /* Smaller font size */
+  font-size: 0.85rem; 
   background-color: #f9f9f9;
   transition: all 0.3s ease;
 }
@@ -102,15 +102,15 @@
 }
 
 select.input-field {
-  padding: 7px 30px 7px 7px; /* Adjusted padding */
+  padding: 7px 30px 7px 7px; 
   background-color: #f9f9f9;
-  font-size: 0.85rem; /* Slightly smaller font size */
+  font-size: 0.85rem; 
 }
 
 .error-message {
   color: rgb(0, 0, 0);
-  font-size: 0.75rem; /* Even smaller font size */
-  margin-bottom: 8px; /* Further reduced margin */
+  font-size: 0.75rem; 
+  margin-bottom: 8px;
 }
 
 .signup-button {
@@ -120,9 +120,9 @@ select.input-field {
   border: none;
   color: white;
   border-radius: 5px;
-  font-size: 0.85rem; /* Smaller font size */
+  font-size: 0.85rem; 
   cursor: pointer;
-  margin-top: 8px; /* Further reduced margin */
+  margin-top: 8px; 
   transition: background-color 0.3s ease;
 }
 
@@ -132,11 +132,11 @@ select.input-field {
 
 .or-container {
   text-align: center;
-  margin: 8px 0; /* Further reduced margin */
+  margin: 8px 0; 
 }
 
 .or-container span {
-  font-size: 0.85rem; /* Smaller font size */
+  font-size: 0.85rem;
   color: #333;
 }
 
@@ -144,7 +144,7 @@ select.input-field {
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin-bottom: 8px; /* Further reduced margin */
+  margin-bottom: 8px; 
 }
 
 .social-login button {
@@ -153,7 +153,7 @@ select.input-field {
   border-radius: 5px;
   border: none;
   cursor: pointer;
-  font-size: 0.85rem; /* Smaller font size */
+  font-size: 0.85rem; 
   transition: transform 0.3s ease;
   display: flex;
   justify-content: center;
@@ -186,17 +186,17 @@ select.input-field {
   font-weight: 500;
 }
 
-/* Ensure the main container height is adjusted */
+
 .signup-container {
-  max-height: none; /* Remove restriction on height */
-  height: auto; /* Allow container to expand based on content */
-  overflow-y: auto; /* Allow scrolling if content overflows */
+  max-height: none; 
+  height: auto;
+  overflow-y: auto; 
 }
 
-/* Responsive Design */
+
 @media (max-width: 768px) {
   .signup-container {
-    flex-direction: column; /* Stack the containers vertically on smaller screens */
+    flex-direction: column;
     width: 100%;
   }
 
@@ -209,61 +209,61 @@ select.input-field {
   .signup-right-container {
     flex: 1;
     padding: 10px;
-    margin-top: 10px; /* Reduced margin */
+    margin-top: 10px; 
   }
 
   .signup-right-container img {
-    width: 70px; /* Smaller logo */
+    width: 70px; 
   }
 
   .signup-right-container h2 {
-    font-size: 1.2rem; /* Smaller font size */
+    font-size: 1.2rem; 
   }
 
   .input-field {
-    font-size: 0.8rem; /* Smaller font size */
+    font-size: 0.8rem; 
   }
 
   .signup-button {
-    font-size: 0.9rem; /* Smaller font size */
+    font-size: 0.9rem; 
   }
 
   .social-login button {
     width: 100%;
-    margin-bottom: 8px; /* Further reduced margin */
+    margin-bottom: 8px;
   }
 }
 
 @media (max-width: 480px) {
   .signup-left-container h1 {
-    font-size: 1.6rem; /* Smaller font size on very small screens */
+    font-size: 1.6rem; 
   }
 
   .signup-right-container img {
-    width: 60px; /* Smaller logo */
+    width: 60px;
   }
 
   .signup-right-container {
-    padding: 8px; /* Reduced padding */
+    padding: 8px;
   }
 
   .input-wrapper i {
-    font-size: 1rem; /* Smaller icon size */
+    font-size: 1rem;
   }
 
   .input-field {
-    font-size: 0.75rem; /* Smaller font size */
+    font-size: 0.75rem;
   }
 
   .signup-button {
-    font-size: 0.85rem; /* Smaller font size */
+    font-size: 0.85rem; 
   }
 
   .social-login button {
-    font-size: 0.75rem; /* Smaller font size */
+    font-size: 0.75rem; 
   }
 
   .or-container span {
-    font-size: 0.75rem; /* Smaller font size */
+    font-size: 0.75rem; 
   }
 }

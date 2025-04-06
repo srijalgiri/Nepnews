@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Login.css';
 const Login = () => {
-  // Handler for social login buttons
+
   const handleSocialLogin = (provider) => {
     console.log(`${provider} login successful`);
-    // Perform actions after successful social login (e.g., redirect, set user data)
+
   };
 
   return (
@@ -40,7 +40,7 @@ const Login = () => {
             <span>OR</span>
           </div>
           <div className="social-login">
-            {/* Social login buttons */}
+            
             <button
               type="button"
               className="facebook-btn"

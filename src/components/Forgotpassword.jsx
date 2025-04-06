@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./pass.css"; // Assuming you have an external CSS file for styling
+import "./pass.css";
 
 const ForgotPassword = () => {
   const [newPassword, setNewPassword] = useState("");
@@ -30,14 +30,14 @@ const ForgotPassword = () => {
     }
 
     setError("");
-    // Simulate password change and navigate back to the login page
+    
     alert("Password changed successfully!");
-    navigate("/login"); // Navigate back to login page
+    navigate("/login"); 
   };
 
   return (
     <div className="forgot-password-container">
-      {/* Circular Back Button */}
+      
       <button className="back-button" onClick={() => navigate("/login")}>
         <i className="material-symbols-outlined">arrow_back</i>
       </button>

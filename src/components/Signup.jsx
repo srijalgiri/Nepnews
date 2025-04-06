@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './signup.css'; // New CSS file for Signup
+import './signup.css';
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -13,18 +13,18 @@ const Signup = () => {
 
   const [error, setError] = useState('');
 
-  // Handler for form submission
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (formData.password !== formData.confirmPassword) {
       setError('Passwords do not match');
       return;
     }
-    // Perform sign-up logic (e.g., API call)
+  
     console.log('Form data submitted:', formData);
   };
 
-  // Handler for form input changes
+
   const handleChange = (e) => {
     setFormData({
       ...formData,
@@ -32,10 +32,10 @@ const Signup = () => {
     });
   };
 
-  // Handler for social signup buttons
+  
   const handleSocialSignup = (provider) => {
     console.log(`${provider} signup successful`);
-    // Perform actions after successful social signup (e.g., redirect, set user data)
+   
   };
 
   return (
@@ -124,7 +124,7 @@ const Signup = () => {
           </div>
 
           <div className="social-login">
-            {/* Social signup buttons */}
+            
             <button
               type="button"
               className="facebook-btn"
