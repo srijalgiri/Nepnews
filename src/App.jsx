@@ -1,5 +1,6 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+// App.jsx
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Logo from "./components/Logo.jsx";
 import Navbar from "./components/Navbar.jsx";
@@ -11,7 +12,7 @@ import Footer from "./components/Footer.jsx";
 
 // Import login system pages
 import Login from "./components/Login.jsx";
-import Signup from "./components/Signup.jsx";
+import Signup from "./components/Signup.jsx"; // Import Signup component
 import ForgotPassword from "./components/Forgotpassword.jsx";
 
 import "./App.css";
@@ -44,7 +45,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
+        <Route path="/signup" element={<Signup />} /> {/* Add this route */}
         <Route path="/forgot-password" element={<ForgotPassword />} />
       </Routes>
     </Router>

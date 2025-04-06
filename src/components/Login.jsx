@@ -1,43 +1,67 @@
-import { Link } from "react-router-dom";
-import './login.css';
-import './social.css';
-
+import React from 'react';
+import { Link } from 'react-router-dom';
+import './Login.css';
 const Login = () => {
+  // Handler for social login buttons
+  const handleSocialLogin = (provider) => {
+    console.log(`${provider} login successful`);
+    // Perform actions after successful social login (e.g., redirect, set user data)
+  };
+
   return (
     <div className="login-container">
-      {/* ✅ Logo Section */}
-      <div className="logo">
-        <img src="image.png" alt="Logo" />
+      <div className="left-container">
+        <h1>Welcome!</h1>
+        <p>Welcome to NepNews, your gateway to real-time updates, in-depth analysis, and breaking news from around the world. Stay informed with trusted journalism, curated stories, and exclusive reports tailored to your interests.</p>
       </div>
+      <div className="right-container">
+        <img className="logo" src="/image.png" alt="Logo" />
+        <h2>Login</h2>
+        <form>
+          <div className="input-container">
+            <label>Email</label>
+            <div className="input-wrapper">
+              <i className="material-symbols-outlined">mail</i>
+              <input type="email" placeholder="Enter your email" required />
+            </div>
+          </div>
+          <div className="input-container">
+            <label>Password</label>
+            <div className="input-wrapper">
+              <i className="material-symbols-outlined">lock</i>
+              <input type="password" placeholder="Enter your password" required />
+            </div>
+          </div>
+          <div className="forgot-password">
+            <Link to="/forgot-password">Forgot Password?</Link>
+          </div>
+          <button type="submit" className="login-btn">Login</button>
+          <div className="or-container">
+            <span>OR</span>
+          </div>
+          <div className="social-login">
+            {/* Social login buttons */}
+            <button
+              type="button"
+              className="facebook-btn"
+              onClick={() => handleSocialLogin('Facebook')}
+            >
+              <i className="fab fa-facebook-f"></i> Login with Facebook
+            </button>
+            <button
+              type="button"
+              className="google-btn"
+              onClick={() => handleSocialLogin('Google')}
+            >
+              <i className="fab fa-google"></i> Login with Google
+            </button>
+          </div>
+          <p className="sign-up">
+  Don't have an account? <Link to="/signup">Sign up</Link>
+</p>
 
-      <h2 className="form-title">Log in</h2>
-
-      <div className="social-login">
-        <button className="social-button">
-          <img src="google.png" alt="Google" className="social-icon" />
-        </button>
-      </div>   
-
-      <p className="separator"><span>or</span></p>
-
-      <form action="#" className="login-page">
-        <div className="input-wrapper">
-          <i className="material-symbols-outlined">mail</i>
-          <input type="email" placeholder="Email Address" className="input-field" required />
-        </div>
-
-        <div className="input-wrapper">
-          <i className="material-symbols-outlined">lock</i>
-          <input type="password" placeholder="Password" className="input-field" required />
-        </div>
-
-        <Link to="/forgotpassword" className="forgot-password">Forgot Password?</Link> {/* Update the link */}
-        <button className="login-button">Log In</button>
-      </form>
-
-      <p className="sign-up">
-        Don't have an account? <Link to="/signup">Sign up</Link>
-      </p>
+        </form>
+      </div>
     </div>
   );
 };
