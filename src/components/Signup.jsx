@@ -1,150 +1,98 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './signup.css';
+import React, { useState } from "react";
+import "./signup.css";
+import { FaUser, FaLock, FaEnvelope, FaArrowLeft } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
+import { useNavigate, Link } from "react-router-dom";
 
 const Signup = () => {
-  const [formData, setFormData] = useState({
-    username: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-    role: 'reader',
-  });
+  const [role, setRole] = useState("reader");
+  const navigate = useNavigate();
 
-  const [error, setError] = useState('');
-
+  const handleBack = () => {
+    navigate("/");
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (formData.password !== formData.confirmPassword) {
-      setError('Passwords do not match');
-      return;
+    
+    const username = e.target[0].value.trim();
+    const email = e.target[1].value.trim();
+    const password = e.target[2].value.trim();
+    const confirmPassword = e.target[3].value.trim();
+
+    if (password !== confirmPassword) {
+      alert("Passwords do not match");
+    } else {
+      alert("Account created successfully!");
+      navigate("/login");
     }
-  
-    console.log('Form data submitted:', formData);
   };
 
-
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  
-  const handleSocialSignup = (provider) => {
-    console.log(`${provider} signup successful`);
-   
+  const handleGoogleSignup = () => {
+    alert("Sign up with Google");
   };
 
   return (
     <div className="signup-container">
-      <div className="left-container">
-        <h1>Welcome!</h1>
-        <p>Join NepNews today to get real-time updates, breaking news, and exclusive reports tailored to your interests.</p>
+      <div className="signup-left">
+        <h1>Join NepNews</h1>
+        <p>
+          Become a part of our community by signing up to access real-time
+          news, in-depth articles, and exclusive content.
+        </p>
       </div>
-      <div className="right-container">
-        <img className="logo" src="/image.png" alt="Logo" />
-        <h2>Sign Up</h2>
-        <form onSubmit={handleSubmit} className="signup-page">
-          <div className="input-wrapper">
-            <i className="material-symbols-outlined">person</i>
-            <input
-              type="text"
-              name="username"
-              placeholder="Username"
-              className="input-field"
-              value={formData.username}
-              onChange={handleChange}
-              required
-            />
-          </div>
 
-          <div className="input-wrapper">
-            <i className="material-symbols-outlined">mail</i>
-            <input
-              type="email"
-              name="email"
-              placeholder="Email Address"
-              className="input-field"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            />
-          </div>
+      <div className="signup-right">
+        <button className="back-btn" onClick={handleBack}>
+          <FaArrowLeft /> Back to Home
+        </button>
 
-          <div className="input-wrapper">
-            <i className="material-symbols-outlined">lock</i>
-            <input
-              type="password"
-              name="password"
-              placeholder="Password"
-              className="input-field"
-              value={formData.password}
-              onChange={handleChange}
-              required
-            />
-          </div>
+        <img src="NepnewsLogo.png" alt="NepNews Logo" className="logo" />
+        <h2>SIGN UP</h2>
 
-          <div className="input-wrapper">
-            <i className="material-symbols-outlined">lock</i>
-            <input
-              type="password"
-              name="confirmPassword"
-              placeholder="Confirm Password"
-              className="input-field"
-              value={formData.confirmPassword}
-              onChange={handleChange}
-              required
-            />
-          </div>
-
-          <div className="input-wrapper">
-            <i className="material-symbols-outlined">assignment_ind</i>
-            <select
-              name="role"
-              className="input-field"
-              value={formData.role}
-              onChange={handleChange}
-              required
-            >
-              <option value="reader">Reader</option>
-              <option value="author">Author</option>
+        <form onSubmit={handleSubmit}>
+          <div className="role-select">
+            <label>Role:</label>
+            <select value={role} onChange={(e) => setRole(e.target.value)} required>
               <option value="editor">Editor</option>
+              <option value="author">Author</option>
+              <option value="reader">Reader</option>
             </select>
           </div>
 
-          {error && <p className="error-message">{error}</p>}
-
-          <button type="submit" className="signup-button">Sign Up</button>
-
-          <div className="or-container">
-            <span>OR</span>
+          <div className="input-box">
+            <FaUser className="icon" />
+            <input type="text" placeholder="Username" required />
           </div>
 
-          <div className="social-login">
-            
-            <button
-              type="button"
-              className="facebook-btn"
-              onClick={() => handleSocialSignup('Facebook')}
-            >
-              <i className="fab fa-facebook-f"></i> Sign Up with Facebook
-            </button>
-            <button
-              type="button"
-              className="google-btn"
-              onClick={() => handleSocialSignup('Google')}
-            >
-              <i className="fab fa-google"></i> Sign Up with Google
-            </button>
+          <div className="input-box">
+            <FaEnvelope className="icon" />
+            <input type="email" placeholder="Email" required />
           </div>
 
-          <p className="login-link">
-            Already have an account? <Link to="/login">Login</Link>
-          </p>
+          <div className="input-box">
+            <FaLock className="icon" />
+            <input type="password" placeholder="Password" required />
+          </div>
+
+          <div className="input-box">
+            <FaLock className="icon" />
+            <input type="password" placeholder="Confirm Password" required />
+          </div>
+
+          <button type="submit" className="signup-btn">Sign Up</button>
         </form>
+
+        <p className="login-link">
+          Already have an account? <Link to="/login">Login</Link>
+        </p>
+
+        <div className="google-signup">
+          <span>Or Sign Up with:</span>
+          <div className="google-icon-container">
+            <FcGoogle className="social-icon" onClick={handleGoogleSignup} />
+          </div>
+        </div>
       </div>
     </div>
   );

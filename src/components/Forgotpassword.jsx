@@ -1,82 +1,94 @@
-import { useState } from "react";
+import React, { useState } from "react";
+import "./forgotPassword.css";
+import { FaLock, FaEnvelope, FaArrowLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import "./pass.css";
 
 const ForgotPassword = () => {
+  const [step, setStep] = useState(1);
+  const [email, setEmail] = useState("");
+  const [otp, setOtp] = useState("");
   const [newPassword, setNewPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    setNewPassword(e.target.value);
+  const handleBack = () => {
+    navigate("/login");
   };
 
-  const handleConfirmChange = (e) => {
-    setConfirmPassword(e.target.value);
-  };
-
-  const handleSubmit = (e) => {
+  const handleOtpSubmit = (e) => {
     e.preventDefault();
+    setStep(2);
+  };
 
-    if (newPassword.length < 8) {
-      setError("Password must be at least 8 characters long.");
-      return;
-    }
-
-    if (newPassword !== confirmPassword) {
-      setError("Passwords do not match.");
-      return;
-    }
-
-    setError("");
-    
-    alert("Password changed successfully!");
-    navigate("/login"); 
+  const handlePasswordSubmit = (e) => {
+    e.preventDefault();
+  
+    alert("Password has been successfully reset!");
+    navigate("/login");
   };
 
   return (
     <div className="forgot-password-container">
-      
-      <button className="back-button" onClick={() => navigate("/login")}>
-        <i className="material-symbols-outlined">arrow_back</i>
-      </button>
+      <div className="forgot-password-left">
+        <h1>Reset Your Password</h1>
+        <p>
+          Enter your email address to receive a One-Time Password (OTP) for
+          resetting your password.
+        </p>
+      </div>
 
-      <h2 className="form-title">Forgot Password</h2>
+      <div className="forgot-password-right">
+        <button className="back-btn" onClick={handleBack}>
+          <FaArrowLeft /> Back to Login
+        </button>
 
-      <p className="description">
-        Enter a new password and confirm it. Make sure it's at least 8 characters long and secure.
-      </p>
+        <img src="NepnewsLogo.png" alt="NepNews Logo" className="logo" />
+        <h2>FORGOT PASSWORD</h2>
 
-      <form onSubmit={handleSubmit} className="forgot-password-form">
-        <div className="input-wrapper">
-          <i className="material-symbols-outlined">lock</i>
-          <input
-            type="password"
-            placeholder="Enter New Password"
-            className="input-field"
-            value={newPassword}
-            onChange={handleChange}
-            required
-          />
-        </div>
+        {step === 1 && (
+          <form onSubmit={handleOtpSubmit}>
+            <div className="input-box">
+              <FaEnvelope className="icon" />
+              <input
+                type="email"
+                placeholder="Enter your email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <button type="submit" className="submit-btn">
+              Send OTP
+            </button>
+          </form>
+        )}
 
-        <div className="input-wrapper">
-          <i className="material-symbols-outlined">lock</i>
-          <input
-            type="password"
-            placeholder="Confirm New Password"
-            className="input-field"
-            value={confirmPassword}
-            onChange={handleConfirmChange}
-            required
-          />
-        </div>
-
-        {error && <p className="error-message">{error}</p>}
-
-        <button type="submit" className="submit-button">Change Password</button>
-      </form>
+        {step === 2 && (
+          <form onSubmit={handlePasswordSubmit}>
+            <div className="input-box">
+              <input
+                type="text"
+                placeholder="Enter OTP"
+                required
+                value={otp}
+                onChange={(e) => setOtp(e.target.value)}
+              />
+            </div>
+            <div className="input-box">
+              <FaLock className="icon" />
+              <input
+                type="password"
+                placeholder="New Password"
+                required
+                value={newPassword}
+                onChange={(e) => setNewPassword(e.target.value)}
+              />
+            </div>
+            <button type="submit" className="submit-btn">
+              Reset Password
+            </button>
+          </form>
+        )}
+      </div>
     </div>
   );
 };
