@@ -1,26 +1,52 @@
-import React from "react";
-import "./login.css";
+import React, { useState } from "react";
 import { FaUser, FaLock, FaArrowLeft } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
+import { signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth } from "./firebase"; 
+import './login.css';
 
 const Login = () => {
   const navigate = useNavigate();
 
   const handleBack = () => {
-    navigate("/"); 
+    navigate("/");
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const username = e.target[0].value.trim();
+    const password = e.target[1].value.trim();
+
+    try {
+      await signInWithEmailAndPassword(auth, username, password);
+      navigate("/dashboard"); 
+    } catch (error) {
+      console.error("Error logging in:", error.message);
+      alert(error.message);
+    }
   };
 
   const goToSignup = () => {
-    navigate("/signup"); 
+    navigate("/signup");
   };
 
   const goToForgotPassword = () => {
-    navigate("/forgot-password"); 
+    navigate("/forgot-password");
+  };
+
+  const handleGoogleSignup = async () => {
+    const provider = new GoogleAuthProvider();
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const user = result.user;
+      console.log("Logged in with Google:", user);
+      navigate("/dashboard");
+    } catch (error) {
+      console.error("Google sign-in error:", error.message);
+      alert(error.message);
+    }
   };
 
   return (
@@ -55,7 +81,6 @@ const Login = () => {
           </div>
 
           <div className="forgot">
-            
             <a href="#" onClick={goToForgotPassword}>Forgot Password?</a>
           </div>
 
@@ -69,7 +94,7 @@ const Login = () => {
         <div className="google-login">
           <span>Or Login with:</span>
           <div className="google-icon-container">
-            <FcGoogle className="social-icon" />
+            <FcGoogle className="social-icon" onClick={handleGoogleSignup} />
           </div>
         </div>
       </div>
